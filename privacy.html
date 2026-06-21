@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Domino Punto Tracker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #C8102E;
+      --blue-light: #8DC8E8;
+      --blue-dark:  #1A6FA0;
+      --white:      #FFFFFF;
+      --bg:         #F5F8FB;
+      --text:       #1A1A2E;
+      --muted:      #5A6270;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 3px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--blue-dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a.active { color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, #0F4A70 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 3.5rem 1.25rem 3rem;
+    }
+    .page-header .badge {
+      display: inline-block;
+      background: rgba(141,200,232,0.25);
+      color: var(--blue-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-size: clamp(1.75rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 4rem;
+    }
+
+    /* Privacy highlight cards */
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .highlight-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(26,111,160,0.08);
+      border-top: 3px solid var(--blue-light);
+    }
+    .highlight-card:nth-child(2) { border-top-color: var(--red); }
+    .highlight-card:nth-child(3) { border-top-color: var(--blue-dark); }
+    .highlight-card .hi-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .highlight-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+    .highlight-card p { font-size: 0.8rem; color: var(--muted); }
+
+    .policy-section {
+      margin-bottom: 2.25rem;
+    }
+    .policy-section h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--blue-light);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .policy-section p {
+      color: var(--text);
+      font-size: 0.93rem;
+      margin-bottom: 0.75rem;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .policy-section ul li {
+      padding: 0.35rem 0 0.35rem 1.5rem;
+      position: relative;
+      font-size: 0.93rem;
+      color: var(--text);
+    }
+    .policy-section ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--blue-dark);
+      font-weight: 700;
+    }
+
+    .contact-box {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(26,111,160,0.08);
+      border-left: 4px solid var(--red);
+      margin-top: 2rem;
+    }
+    .contact-box h2 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .contact-box p { font-size: 0.9rem; color: var(--muted); }
+    .contact-box a { color: var(--blue-dark); font-weight: 600; text-decoration: none; }
+    .contact-box a:hover { color: var(--red); text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--blue-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .nav-brand { font-size: 0.9rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">🁣 Domino Punto</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html" class="active">Privacy</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="badge">Legal</span>
+  <h1>Privacy Policy</h1>
+  <p>Domino Punto Tracker &nbsp;·&nbsp; Santrico Apps &nbsp;·&nbsp; Effective: June 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <span class="hi-icon">🚫</span>
+      <h3>No Data Collected</h3>
+      <p>We collect absolutely nothing about you or your games.</p>
+    </div>
+    <div class="highlight-card">
+      <span class="hi-icon">📵</span>
+      <h3>No Internet Needed</h3>
+      <p>The app works fully offline. No network requests, ever.</p>
+    </div>
+    <div class="highlight-card">
+      <span class="hi-icon">📱</span>
+      <h3>Stays on Your Device</h3>
+      <p>All game data is stored locally and never leaves your phone.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <h2>1. Overview</h2>
+    <p>Domino Punto Tracker ("the App") is developed by Santrico Apps. We are committed to protecting your privacy. This policy describes how — and how little — we handle information in connection with the App.</p>
+    <p>The short version: we collect nothing. The longer version follows below.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>2. Information We Do Not Collect</h2>
+    <p>The App does not collect, transmit, store remotely, or share any personal information or usage data. Specifically, the App does not collect:</p>
+    <ul>
+      <li>Your name, email address, or any identifying information</li>
+      <li>Device identifiers, advertising IDs, or IP addresses</li>
+      <li>Game scores, history, or any content you enter</li>
+      <li>Location data</li>
+      <li>Crash reports or diagnostic logs sent to our servers</li>
+      <li>Analytics or usage statistics of any kind</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>3. No Accounts Required</h2>
+    <p>The App does not require you to create an account or sign in with any service. You can download and use the App immediately without providing any personal information.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>4. No Network Requests</h2>
+    <p>The App makes no network requests of any kind. It does not connect to any server operated by Santrico Apps or any third party. There are no third-party SDKs, advertising networks, or analytics frameworks embedded in the App.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>5. On-Device Storage</h2>
+    <p>Any data generated by the App — such as game scores or settings — is stored locally on your device using standard iOS storage mechanisms. This data is controlled entirely by you and can be deleted at any time by removing the App from your device.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>6. Children's Privacy</h2>
+    <p>Because the App collects no data from any user, it is safe for users of all ages. We do not knowingly collect personal information from anyone, including children under the age of 13.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>7. Changes to This Policy</h2>
+    <p>If our privacy practices ever change, we will update this policy and revise the effective date at the top of this page. We encourage you to review this page periodically. Continued use of the App after any changes constitutes acceptance of the updated policy.</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>8. Apple App Store</h2>
+    <p>The App is distributed through the Apple App Store. Apple may collect certain information in connection with your download and use of the App in accordance with their own privacy policy. Please review Apple's Privacy Policy for details on data they may collect.</p>
+  </div>
+
+  <div class="contact-box">
+    <h2>Questions or Concerns?</h2>
+    <p>If you have any questions about this privacy policy, please contact us at <a href="mailto:santrico.support@gmail.com">santrico.support@gmail.com</a>. We're happy to help.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Santrico Apps &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
+</footer>
+
+</body>
+</html>

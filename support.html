@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – Domino Punto Tracker</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #C8102E;
+      --blue-light: #8DC8E8;
+      --blue-dark:  #1A6FA0;
+      --white:      #FFFFFF;
+      --bg:         #F5F8FB;
+      --text:       #1A1A2E;
+      --muted:      #5A6270;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 3px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--blue-dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links a.active { color: var(--red); border-bottom: 2px solid var(--red); padding-bottom: 2px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, #0F4A70 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 3.5rem 1.25rem 3rem;
+    }
+    .page-header .badge {
+      display: inline-block;
+      background: rgba(141,200,232,0.25);
+      color: var(--blue-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .page-header h1 {
+      font-size: clamp(1.75rem, 5vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .page-header p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem 4rem;
+    }
+
+    /* App description card */
+    .app-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 2px 12px rgba(26,111,160,0.08);
+      border-left: 5px solid var(--blue-dark);
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .app-card-icon { font-size: 2.8rem; flex-shrink: 0; line-height: 1; }
+    .app-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--blue-dark); }
+    .app-card p { font-size: 0.9rem; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    details {
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(26,111,160,0.07);
+      overflow: hidden;
+    }
+    details[open] {
+      box-shadow: 0 4px 16px rgba(26,111,160,0.12);
+    }
+    summary {
+      cursor: pointer;
+      padding: 1.1rem 1.4rem;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--text);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: background 0.15s;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "+";
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--blue-dark);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    summary:hover { background: var(--bg); }
+    .faq-body {
+      padding: 0 1.4rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      border-top: 1px solid var(--bg);
+      padding-top: 0.9rem;
+    }
+    .faq-body strong { color: var(--text); }
+    .faq-body ol, .faq-body ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .faq-body li { margin-bottom: 0.3rem; }
+    .faq-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue-dark);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      margin-right: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: linear-gradient(135deg, var(--red) 0%, #A00D24 100%);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      text-align: center;
+    }
+    .contact-box .ci { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+    .contact-box h2 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .contact-box p { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; }
+    .btn-email {
+      display: inline-block;
+      background: var(--white);
+      color: var(--red);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding: 0.7rem 1.75rem;
+      border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .btn-email:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+    .contact-note {
+      margin-top: 0.9rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--blue-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 480px) {
+      .nav-brand { font-size: 0.9rem; }
+      .nav-links { gap: 1rem; }
+      .app-card { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">🁣 Domino Punto</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="support.html" class="active">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="badge">Support</span>
+  <h1>How Can We Help?</h1>
+  <p>Find answers below, or reach out directly — we're happy to assist.</p>
+</div>
+
+<div class="content">
+
+  <div class="app-card">
+    <span class="app-card-icon">🎲</span>
+    <div>
+      <h2>About Domino Punto Tracker</h2>
+      <p>Domino Punto Tracker is a simple, beautiful score-keeping app for domino games on iOS. Track points for two teams round by round, review the full match history, and set your own winning score — all without paper, pencil, or arguments. Built with Puerto Rico pride by Santrico Apps.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">❓ Frequently Asked Questions</h2>
+
+  <div class="faq-list">
+
+    <details>
+      <summary><span><span class="faq-tag">Basics</span>How do I start a new game?</span></summary>
+      <div class="faq-body">
+        <p>From the main screen, tap the <strong>Reset / New Game</strong> button (usually a refresh or trash icon in the top corner). You'll be prompted to confirm before all scores are cleared, so there's no risk of accidentally wiping a game in progress.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">Basics</span>How do I reset the current game?</span></summary>
+      <div class="faq-body">
+        <p>To reset and start fresh:</p>
+        <ol>
+          <li>Tap the <strong>New Game</strong> or <strong>Reset</strong> button at the top of the score screen.</li>
+          <li>Confirm when prompted — this clears all scores and round history.</li>
+          <li>Both team scores return to 0 and you're ready to go.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">Settings</span>How do I change the point limit?</span></summary>
+      <div class="faq-body">
+        <p><strong>Tap the progress bar</strong> at the top of the score screen. A picker or input will appear letting you choose your target score — common options include 100, 150, and 200, or you can enter a custom value. The progress bar will immediately update to reflect the new goal. You can change the limit at any point during a game.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">Scoring</span>How do I undo a score entry?</span></summary>
+      <div class="faq-body">
+        <p>Made a mistake? No problem. Tap the <strong>Undo</strong> button (↩ icon) right after entering a score to reverse the last entry. The score and round history will both revert to the previous state. Only the most recent entry can be undone at a time.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">Scoring</span>How do I add points for a round?</span></summary>
+      <div class="faq-body">
+        <p>Tap the <strong>+</strong> button under the team that won the round, then enter the number of points scored. Confirm to save the entry. The score card animates to show the new total, and the round is added to the history log below.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">History</span>Where can I see past rounds?</span></summary>
+      <div class="faq-body">
+        <p>Scroll down on the main score screen to see the <strong>Round History</strong> section. Each entry shows the round number, which team scored, and how many points were added. This history is available for the current game only — it clears when you start a new game.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">Technical</span>Does the app need an internet connection?</span></summary>
+      <div class="faq-body">
+        <p>No. Domino Punto Tracker is fully offline. It makes no network requests and works anywhere — in your backyard, at the beach, or anywhere domino is played. See our <a href="privacy.html" style="color: var(--blue-dark);">Privacy Policy</a> for full details.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary><span><span class="faq-tag">Technical</span>Will my game be saved if I close the app?</span></summary>
+      <div class="faq-body">
+        <p>Yes. The app saves your current game automatically. If you close the app and reopen it later, your scores and round history will still be there exactly as you left them.</p>
+      </div>
+    </details>
+
+  </div>
+
+  <div class="contact-box">
+    <span class="ci">✉️</span>
+    <h2>Still need help?</h2>
+    <p>Can't find the answer you're looking for? Send us an email and we'll get back to you as soon as possible.</p>
+    <a href="mailto:santrico.support@gmail.com" class="btn-email">Email Support</a>
+    <p class="contact-note">santrico.support@gmail.com</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Santrico Apps &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
+</footer>
+
+</body>
+</html>
